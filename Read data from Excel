@@ -1,0 +1,45 @@
+//$Id$
+package gokul;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class tests {
+
+	
+	//read data from Excel
+	public static void readDataFromExcel() throws IOException {
+		File file = new File("./files/channelsuniqnamelist.xlsx");
+		FileInputStream input = new FileInputStream(file);
+		Workbook wb = new XSSFWorkbook(input);  //Modern excel format
+		Sheet sheet = wb.getSheet("sheet1"); //To tell where should take data
+		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum(); //for get total count of rows in a sheet
+		
+		for(int i = 0; i < rowCount +1; i++) //treversing row
+    {  
+			Row row = sheet.getRow(i);
+			Cell s0 = row.getCell(0);
+			Cell s = row.getCell(1);
+			Cell s2 = row.getCell(2);
+			for(int j = 0; j < row.getLastCellNum() ; j++)  //trevesing column
+      {  
+				System.out.print(row.getCell(j).getStringCellValue().toString());
+			}
+			System.out.println();
+		}
+
+	}
+ 
+	public static void main(String arg[]) throws IOException {
+		readDataFromExcel();
+	}
+
+}  
