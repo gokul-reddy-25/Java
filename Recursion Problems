@@ -1,0 +1,41 @@
+//$Id$
+package gokul;
+
+public class Recursion {
+
+//Reverse a String
+	public static String recursion(String str) {
+		if(str.isEmpty()) {
+			return " ";
+		}
+		return recursion(str.substring(1))+str.charAt(0);
+		//return recursion(str.substring(1) , n-1)+str.charAt(0);
+	}
+
+//sum all numbers in array
+	public static int rSum(int[] arr, int n) {
+		if(n<0) {
+			return 0;
+		}
+		return rSum(arr, n-1)+arr[n];
+	}
+
+//Fibonacci series
+	public static int fibbo(int a) {
+		if(a<=0) {
+			return 0;
+		}
+		return fibbo((a-1)+(a-2));
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		int[] xyz = {1,1,2,1,1,1};
+		//System.out.print(recursion("gokul"));
+		//System.out.println(rSum(xyz, xyz.length-1));
+		System.out.println(fibbo(55));
+	}
+}
